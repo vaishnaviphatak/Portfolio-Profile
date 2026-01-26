@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vaishnavi Phatak | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container nav">
+      <div class="logo">Vaishnavi.</div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <div class="greeting-badge reveal">
+          <span>Hi there!</span> <span class="wave">👋</span>
+        </div>
+        <h2 class="reveal">I'm Vaishnavi<br><span>Phatak</span></h2>
+        <p class="typing"></p>
+        <div class="reveal" style="margin-top: 30px;">
+          <a href="#projects" class="btn">Explore My Work</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container reveal">
+        <h2>Behind the Code</h2>
+        <p style="font-size: 1.25rem; max-width: 800px; color: var(--text-muted);">
+          I am a software developer dedicated to building clean, high-performance web applications.
+          With a passion for architecture and user-centric design, I transform complex problems into elegant solutions.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects" class="section gray">
+      <div class="container">
+        <h2 class="reveal">Featured Projects</h2>
+        <div class="grid">
+          <div class="card reveal">
+            <h3>Pathfinding Visualizer</h3>
+            <p>An interactive tool demonstrating BFS, DFS, and Dijkstra algorithms with real-time grid manipulation.</p>
+          </div>
+          <div class="card reveal">
+            <h3>LinkSwift</h3>
+            <p>High-performance URL shortener architected with Django and optimized with strategic database indexing.
+            </p>
+          </div>
+          <div class="card reveal">
+            <h3>MyFinance</h3>
+            <p>A comprehensive financial intelligence dashboard featuring dynamic data visualization and predictive
+              insights.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements" class="section">
+      <div class="container">
+        <h2 class="reveal">Milestones</h2>
+        <div class="grid">
+          <div class="card reveal">
+            <h3>GenAI Pioneer</h3>
+            <p>Mastered modern data analytics workflows leveraging generative AI for complex dataset interpretation.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Open Source Spirit</h3>
+            <p>Contributed significant architectural improvements to visualization toolkits durante GSoC.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Python Internship</h3>
+            <p>Developed robust, production-ready modules during high-impact Python engineering internships.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section gray">
+      <div class="container reveal">
+        <h2>Get In Touch</h2>
+        <form class="contact-form">
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Tell me about your project..." required></textarea>
+          <button class="btn" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Vaishnavi Phatak • Built with Passion</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
