@@ -1,47 +1,39 @@
-/* Typing Effect */
-const phrases = ["Software Developer", "Problem Solver", "Full-Stack Engineer", "AI Enthusiast"];
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typeSpeed = 100;
+/* Dark Mode Toggle */
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
 
-const typingEl = document.querySelector(".typing");
-
-function type() {
-  const currentPhrase = phrases[phraseIndex];
-  
-  if (isDeleting) {
-    typingEl.textContent = currentPhrase.substring(0, charIndex - 1);
-    charIndex--;
-    typeSpeed = 50;
-  } else {
-    typingEl.textContent = currentPhrase.substring(0, charIndex + 1);
-    charIndex++;
-    typeSpeed = 100;
-  }
-
-  if (!isDeleting && charIndex === currentPhrase.length) {
-    typeSpeed = 2000;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-    typeSpeed = 500;
-  }
-
-  setTimeout(type, typeSpeed);
+// Check for saved theme
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark-mode");
+  themeToggle.textContent = "☀️";
 }
 
-document.addEventListener("DOMContentLoaded", type);
+themeToggle.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+  const isDark = body.classList.contains("dark-mode");
+  themeToggle.textContent = isDark ? "☀️" : "🌙";
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
+
+/* Typing Effect */
+const subtitlePlaceholder = document.getElementById("hero-subtitle");
+const text = "Software Developer & Student";
+let index = 0;
+
+function typeWriter() {
+  if (index < text.length) {
+    subtitlePlaceholder.textContent += text.charAt(index);
+    index++;
+    setTimeout(typeWriter, 100);
+  }
+}
 
 /* Scroll Reveal */
-const reveals = document.querySelectorAll(".reveal");
 const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px"
+  threshold: 0.1
 };
 
-const observer = new IntersectionObserver(entries => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("active");
@@ -49,28 +41,28 @@ const observer = new IntersectionObserver(entries => {
   });
 }, observerOptions);
 
-reveals.forEach(el => observer.observe(el));
+/* Initialize */
+document.addEventListener("DOMContentLoaded", () => {
+  typeWriter();
+  document.querySelectorAll(".scroll-reveal").forEach(el => observer.observe(el));
+});
 
-/* Card Interactions */
-document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("mousemove", e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-    
-    // Magnetic-like tilt
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
-    
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-  });
+/* Simple Contact Form Handling */
+document.querySelector(".contact-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  alert("Thank you for your message! (Note: This is a demo form)");
+  this.reset();
+});
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+/* Smooth Scroll for Navigation Links */
+document.querySelectorAll('nav a').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      document.querySelector(href).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
   });
 });
